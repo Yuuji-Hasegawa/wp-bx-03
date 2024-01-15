@@ -34,6 +34,22 @@ function get_breadcrumb()
             $output .= '<li class="c-breadcrumb-item">
               <a href="' . esc_url(home_url('/news/')) . '" class="c-text-link c-content-l" aria-current="page">お知らせ</a>
             </li>';
+        } elseif(is_post_type_archive('gallery')) {
+            $output .= '<li class="c-breadcrumb-item">
+              <a href="' . esc_url(home_url('/gallery/')) . '" class="c-text-link c-content-l" aria-current="page">ギャラリー</a>
+            </li>';
+        } elseif(is_post_type_archive('product')) {
+            $output .= '<li class="c-breadcrumb-item">
+              <a href="' . esc_url(home_url('/product/')) . '" class="c-text-link c-content-l" aria-current="page">商品一覧</a>
+            </li>';
+        } elseif(is_post_type_archive('review')) {
+            $output .= '<li class="c-breadcrumb-item">
+              <a href="' . esc_url(home_url('/review/')) . '" class="c-text-link c-content-l" aria-current="page">お客様の声</a>
+            </li>';
+        } elseif(is_post_type_archive('campaign')) {
+            $output .= '<li class="c-breadcrumb-item">
+              <a href="' . esc_url(home_url('/campaign/')) . '" class="c-text-link c-content-l" aria-current="page">キャンペーン</a>
+            </li>';
         } elseif (is_category()) {
             $output .= '<li class="c-breadcrumb-item">
               <a href="' . home_url('/blog/') . '" class="c-text-link c-content-l">ブログ</a>
@@ -66,6 +82,20 @@ function get_breadcrumb()
         if ('news' == get_post_type()) {
             $output .= '<li class="c-breadcrumb-item">
               <a href="' . esc_url(home_url('/news/')) . '" class="c-text-link c-content-l">お知らせ</a>
+            </li>';
+            $output .= '<li class="c-breadcrumb-item">
+              <a href="' . esc_url(get_permalink($post->ID)) . '" class="c-text-link c-content-l" aria-current="page">' . get_the_title($post->ID) . '</a>
+            </li>';
+        } elseif('product' == get_post_type()) {
+            $output .= '<li class="c-breadcrumb-item">
+              <a href="' . esc_url(home_url('/product/')) . '" class="c-text-link c-content-l">商品一覧</a>
+            </li>';
+            $output .= '<li class="c-breadcrumb-item">
+              <a href="' . esc_url(get_permalink($post->ID)) . '" class="c-text-link c-content-l" aria-current="page">' . get_the_title($post->ID) . '</a>
+            </li>';
+        } elseif('campaign' == get_post_type()) {
+            $output .= '<li class="c-breadcrumb-item">
+              <a href="' . esc_url(home_url('/campaign/')) . '" class="c-text-link c-content-l">キャンペーン</a>
             </li>';
             $output .= '<li class="c-breadcrumb-item">
               <a href="' . esc_url(get_permalink($post->ID)) . '" class="c-text-link c-content-l" aria-current="page">' . get_the_title($post->ID) . '</a>

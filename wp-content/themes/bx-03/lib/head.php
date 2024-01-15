@@ -11,6 +11,14 @@ function set_my_title()
     } elseif(is_archive()) {
         if (is_post_type_archive('news')) {
             $my_title = 'お知らせ';
+        } elseif (is_post_type_archive('product')) {
+            $my_title = '商品一覧';
+        } elseif (is_post_type_archive('gallery')) {
+            $my_title = 'ギャラリー';
+        } elseif (is_post_type_archive('review')) {
+            $my_title = 'お客様の声';
+        } elseif (is_post_type_archive('campaign')) {
+            $my_title = 'キャンペーン';
         } elseif (is_category()) {
             $my_title = get_queried_object()->cat_name;
         } elseif (is_tag()) {
@@ -64,6 +72,14 @@ function get_my_canonical()
     } elseif (is_archive()) {
         if (is_post_type_archive('news')) {
             $canonical = esc_url(home_url('/news/'));
+        } elseif (is_post_type_archive('product')) {
+            $canonical = esc_url(home_url('/product/'));
+        } elseif (is_post_type_archive('gallery')) {
+            $canonical = esc_url(home_url('/gallery/'));
+        } elseif (is_post_type_archive('review')) {
+            $canonical = esc_url(home_url('/review/'));
+        } elseif (is_post_type_archive('campaign')) {
+            $canonical = esc_url(home_url('/campaign/'));
         } elseif (is_category()) {
             $cat = get_queried_object();
             $canonical = esc_url(get_category_link($cat->term_id));

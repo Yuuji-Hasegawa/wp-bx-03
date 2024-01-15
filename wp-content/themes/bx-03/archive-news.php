@@ -1,6 +1,6 @@
 <?php get_header();?>
 <div class="o-box o-box--transparent o-center u-bg-qua u-pb-2xl">
-  <h1 class="c-heading u-text-weight-b">ニュース</h1>
+  <h1 class="c-heading u-text-weight-b">お知らせ</h1>
   <?php if (have_posts()):?>
   <ul class="o-stack o-stack--m">
     <?php while (have_posts()): the_post();?>
@@ -15,7 +15,7 @@
     <?php endwhile;?>
   </ul>
   <?php else:?>
-  <p class="c-content-l">ニュースはまだありません。</p>
+  <p class="c-content-l">お知らせはまだありません。</p>
   <?php endif;
 echo get_pagination();?>
 </div>

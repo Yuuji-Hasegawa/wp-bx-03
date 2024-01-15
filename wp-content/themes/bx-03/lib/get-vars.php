@@ -51,13 +51,45 @@ function get_thumb()
     $output .= '</picture>';
     return $output;
 }
+function get_thumb_sq()
+{
+    $output = '<picture class="o-frame o-frame--square">';
+    if (has_post_thumbnail()) {
+        $output .= '<img src="' . get_the_post_thumbnail_url($post->ID, 'full') . '"  width="100%" height="100%" loading="lazy" decoding="async" fetchpriority="low" alt=""/>';
+    } else {
+        $output .= '
+      <source srcset="' . get_template_directory_uri() . '/img/thumb.avif" type="image/avif" />
+      <source srcset="' . get_template_directory_uri() . '/img/thumb.webp" type="image/webp" />
+      <img src="' . get_template_directory_uri() . '/img/thumb.png" width="100%" height="100%" loading="lazy" decoding="async" fetchpriority="low" alt="" />';
+    }
+    $output .= '</picture>';
+    return $output;
+}
+function get_reviewer_pict()
+{
+    global $post;
+    $output = '<picture class="o-frame o-frame--round">';
+    if(has_post_thumbnail()) {
+        $output .= '<img src="' . get_the_post_thumbnail_url($post->ID, 'full') . '"  width="100%" height="100%" loading="lazy" decoding="async" fetchpriority="low" alt=""/>';
+    } else {
+        $output .= '
+          <source type="image/avif" srcset="' . get_template_directory_uri() . '/img/profile_default.avif" />
+          <source type="image/webp" srcset="' . get_template_directory_uri() . '/img/profile_default.webp" />
+          <img src="' . get_template_directory_uri() . '/img/profile_default.png" width="100%" height="100%" loading="lazy" decoding="async" fetchpriority="low" alt="" />
+    ';
+    }
+    $output .= '</picture>';
+    return $output;
+}
 function get_author_id()
 {
     global $post;
-    if(!is_404()) {
-        $author_id = $post->post_author;
+    $author_id = '';
+    if($post->post_author) {
         if($author_id === '0') {
             $author_id = '1';
+        } else {
+            $author_id = $post->post_author;
         }
     } else {
         $author_id = '0';
@@ -427,4 +459,54 @@ function get_service_list()
     if ($output) {
         return $output;
     }
+}
+function get_pay_list()
+{
+    $services = get_vars('company', 'pay');
+    $output = '';
+    if ($services) {
+        $output = '<ul class="c-disc-list">';
+        for ($i = 0; $i < count($services); $i++) {
+            $output .= '<li>' . $services[$i] . '</li>';
+        }
+        $output .= '</ul>';
+    }
+    if ($output) {
+        return $output;
+    }
+}
+function get_review_count()
+{
+    $args = array(
+      'post_type' => 'review',
+      'posts_per_page' => -1,
+);
+    $the_query = new WP_Query($args);
+    $count = $the_query->found_posts;
+    return $count;
+}
+function get_review_score()
+{
+    $args = array(
+      'post_type' => 'review',
+      'posts_per_page' => -1,
+);
+    $the_query = new WP_Query($args);
+    $count = $the_query->found_posts;
+    $tmp = 0;
+    $avg = 0;
+    if ($the_query->have_posts()) {
+        while ($the_query->have_posts()) {
+            $the_query->the_post();
+            $rating = intval(get_post_meta(get_the_ID(), 'review_rate', true));
+            if (is_int($rating)) {
+                $tmp += $rating;
+            }
+        }
+        wp_reset_postdata();
+    }
+    if ($count != '0') {
+        $avg = $tmp / $count;
+    }
+    return $avg;
 }

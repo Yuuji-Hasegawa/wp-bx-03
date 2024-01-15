@@ -1,6 +1,6 @@
 <?php get_header();
 if (have_posts()):?>
-<div class="o-box o-box--post o-center o-center--content u-bg-qua u-mt-2xl u-pb-2xl">
+<div class="o-box o-box--post o-center o-center--content u-bg-qua u-mt-2xl u-mb-2xl u-pb-2xl">
   <h1 class="c-heading"><?php the_title();?></h1>
   <div class="o-stack o-stack--l">
     <div class="o-cluster">

@@ -50,6 +50,14 @@
 		"close": "19:00",
     "workday": "平日",
 		"dayoff": "土日祝・年末年始",
+    "access": "JR大阪駅徒歩n分",
+		"parking": "あり<br />敷地内にnn台有り<br />近隣にコインパーキングあり",
+		"station": "JR大阪駅",
+    "pay": [
+			"現金",
+			"クレジットカード（VISA、MASTER、JCB、AMEX、Diners）",
+			"電子マネー（交通系電子マネー、iD、QUICPay、PayPay）"
+		],
 		"service": [
 			"事業項目1",
 			"事業項目2",

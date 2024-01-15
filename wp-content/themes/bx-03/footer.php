@@ -3,10 +3,64 @@
  if(!is_front_page()) {
      echo get_breadcrumb();
  }?>
-<div class="o-box o-box--transparent o-center u-bg-primary u-pt-2xl u-pb-2xl">
-  <h2 class="o-stack o-stack--s u-text-center u-mb-m">
+<div class="o-center u-bg-primary u-pt-2xl u-pb-2xl">
+  <div class="o-sidebar">
+    <div class="o-sidebar__narrow">
+      <h2 class="c-display-m u-text-weight-b u-mb-l">アクセス</h2>
+      <ul class="c-disc-list u-mb-l">
+        <li class="c-content-l">JR大阪駅から徒歩n分</li>
+        <li class="c-content-l">各線梅田駅から徒歩n分</li>
+      </ul>
+      <a href="https://maps.app.goo.gl/VfNydfqzmp4hEZKw7" target="_blank" rel="noopener"
+        class="o-box o-box--button o-box--rect-button u-mb-xl">
+        <span class="o-icon-parent">
+          <span class="u-flex-shrink-none">Google Maps</span>
+          <svg class="o-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 92.3 132.3">
+            <path fill="#1a73e8" d="M60.2 2.2C55.8.8 51 0 46.1 0 32 0 19.3 6.4 10.8 16.5l21.8 18.3L60.2 2.2z"></path>
+            <path fill="#ea4335" d="M10.8 16.5C4.1 24.5 0 34.9 0 46.1c0 8.7 1.7 15.7 4.6 22l28-33.3-21.8-18.3z"></path>
+            <path fill="#4285f4"
+              d="M46.2 28.5c9.8 0 17.7 7.9 17.7 17.7 0 4.3-1.6 8.3-4.2 11.4 0 0 13.9-16.6 27.5-32.7-5.6-10.8-15.3-19-27-22.7L32.6 34.8c3.3-3.8 8.1-6.3 13.6-6.3">
+            </path>
+            <path fill="#fbbc04"
+              d="M46.2 63.8c-9.8 0-17.7-7.9-17.7-17.7 0-4.3 1.5-8.3 4.1-11.3l-28 33.3c4.8 10.6 12.8 19.2 21 29.9l34.1-40.5c-3.3 3.9-8.1 6.3-13.5 6.3">
+            </path>
+            <path fill="#34a853"
+              d="M59.1 109.2c15.4-24.1 33.3-35 33.3-63 0-7.7-1.9-14.9-5.2-21.3L25.6 98c2.6 3.4 5.3 7.3 7.9 11.3 9.4 14.5 6.8 23.1 12.8 23.1s3.4-8.7 12.8-23.2">
+            </path>
+          </svg>
+        </span>
+      </a>
+      <div class="o-stack o-stack--s">
+        <dl class="o-cluster">
+          <dt class="u-txt-weight-b c-content-l">営業時間</dt>
+          <dd class="c-content-l"><span
+              class="u-font-en-con"><?php echo get_vars('company', 'open');?>~<?php echo get_vars('company', 'close');?></span>
+          </dd>
+        </dl>
+        <dl class="o-cluster">
+          <dt class="u-txt-weight-b c-content-l">定休日</dt>
+          <dd class="c-content-l">
+            <?php echo get_vars('company', 'dayoff');?>
+          </dd>
+        </dl>
+        <p class="c-notes c-suppl-l">営業時間、定休日ともに、施設に準じる</p>
+      </div>
+    </div>
+    <div class="o-sidebar__wide">
+      <div class="o-frame o-frame--no-color">
+        <iframe class="c-lazy-map"
+          src="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAAAAACH5BAEAAAAALAAAAAABAAEAAAICRAEAOw=="
+          data-src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3279.970528685342!2d135.49183357574483!3d34.70592327291773!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x6000e68e5570e51f%3A0xb0e6e493c405c979!2z44CSNTMwLTAwMTEg5aSn6Ziq5bqc5aSn6Ziq5biC5YyX5Yy65aSn5rex55S677yT4oiS77yR!5e0!3m2!1sja!2sjp!4v1704696233017!5m2!1sja!2sjp"
+          width="100%" height="100%" style="border: 0" allowfullscreen="" loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade" title="Google Maps"></iframe>
+      </div>
+    </div>
+  </div>
+</div>
+<div class="o-box o-box--transparent o-center u-bg-qua u-pt-2xl u-pb-2xl">
+  <h2 class="o-stack u-text-center u-mb-m">
     <span class="c-display-m u-text-weight-b">お問い合わせ</span>
-    <span class="c-content-l u-text-weight-m">ご相談・ご質問は、こちらからお気軽にお問い合わせください。</span>
+    <span class="c-content-l u-text-weight-m">ご予約等は、こちらからお気軽にお問い合わせください。</span>
   </h2>
   <div class="o-stack o-stack--s u-text-center u-mb-m">
     <a href="#" class="o-icon-parent o-icon-parent--text-center c-tel-link c-display-l" target="_blank" rel="noopener">
@@ -19,9 +73,7 @@
       <span
         class="u-font-en-con u-text-weight-b"><?php echo get_vars('company', 'tel');?></span>
     </a>
-    <span
-      class="c-suppl-l">営業時間&nbsp;<?php echo get_vars('company', 'workday');?>
-      <span
+    <span class="c-suppl-l">受付時間&nbsp;<span
         class="u-font-en-con"><?php echo get_vars('company', 'open');?>~<?php echo get_vars('company', 'close');?></span></span>
   </div>
   <div class="u-text-center">
@@ -37,75 +89,27 @@
     </a>
   </div>
 </div>
-<footer class="o-center c-footer u-pt-2xl u-pb-2xl">
-  <div class="o-sidebar u-mb-m">
-    <div class="o-stack o-stack--m o-sidebar__footLeft">
-      <ul class="o-cluster">
-        <li><a class="c-gnav-link c-content-l u-text-weight-b"
-            href="<?php echo home_url('/');?>">トップ</a>
-        </li>
-        <li><a class="c-gnav-link c-content-l u-text-weight-b"
-            href="<?php echo home_url('/company/');?>">会社情報</a>
-        </li>
-        <li><a class="c-gnav-link c-content-l u-text-weight-b"
-            href="<?php echo home_url('/blog/');?>">ブログ</a>
-        </li>
-        <li><a class="c-gnav-link c-content-l u-text-weight-b"
-            href="<?php echo home_url('/news/');?>">お知らせ</a>
-        </li>
-        <li><a class="c-gnav-link c-content-l u-text-weight-b"
-            href="<?php echo home_url('/inquiry/');?>">お問い合わせ</a>
-        </li>
-      </ul>
-      <ul class="o-cluster">
-        <li><a class="c-gnav-link c-content-m"
-            href="<?php echo home_url('/terms/');?>">サイト規約</a>
-        </li>
-        <li><a class="c-gnav-link c-content-m"
-            href="<?php echo home_url('/privacy-policy/');?>">プライバシーポリシー</a>
-        </li>
-      </ul>
-    </div>
-    <div class="o-sidebar__footRight">
-      <h3 class="c-display-xs u-text-weight-b u-font-en-con">Follow Us</h3>
-      <div class="o-cluster">
-        <a class="c-text-link c-display-m"
-          href="<?php echo get_vars('sns', 'fb');?>"
-          target="_blank" rel="noopener" aria-label="Goto Facebook">
-          <svg class="o-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-            <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-            <path
-              d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"
-              fill="currentColor"></path>
-          </svg>
-        </a>
-        <a class="c-text-link c-display-m"
-          href="<?php echo get_vars('sns', 'tw');?>"
-          target="_blank" rel="noopener" aria-label="Goto Twitter">
-          <svg class="o-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
-            <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
-            <path
-              d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"
-              fill="currentColor" />
-          </svg>
-        </a>
-        <a class="c-text-link c-display-m"
-          href="<?php echo get_vars('sns', 'instagram');?>"
-          target="_blank" rel="noopener" aria-label="Goto Instagram">
-          <svg class="o-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
-            <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
-            <path
-              d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"
-              fill="currentColor"></path>
-          </svg>
-        </a>
-      </div>
-    </div>
-  </div>
-  <div class="o-stack o-stack--s u-mb-l">
+<footer class="o-center c-footer u-bg-gradient u-pt-m u-pb-l">
+  <ul class="o-cluster u-max-item u-block-center u-mb-m">
+    <li class="c-ft-item u-text-center"><a class="c-ft-link c-content-m"
+        href="<?php echo home_url('/company/');?>">COMPANY</a>
+    </li>
+    <li class="c-ft-item u-text-center"><a class="c-ft-link c-content-m u-flex-shrink-none"
+        href="<?php echo home_url('/terms/');?>">TERM
+        OF USE</a>
+    </li>
+    <li class="c-ft-item u-text-center"><a class="c-ft-link c-content-m"
+        href="<?php echo home_url('/privacy-policy/');?>">PRIVACY
+        POLICY</a></li>
+    <li class="c-ft-item u-text-center"><a class="c-ft-link c-content-m"
+        href="<?php echo home_url('/inquiry/');?>">INQUIRY</a>
+    </li>
+  </ul>
+  <div class="o-stack u-max-item u-block-center">
     <a href="<?php echo home_url('/');?>"
-      class="o-icon-parent o-icon-parent--center o-icon-parent--footer-logo u-max-item">
-      <svg class="o-icon" width="670" height="403" viewBox="0 0 670 403" fill="none" xmlns="http://www.w3.org/2000/svg">
+      class="o-icon-parent o-icon-parent--center o-icon-parent--text-center c-logo-link">
+      <svg class="o-icon c-display-l" width="670" height="403" viewBox="0 0 670 403" fill="none"
+        xmlns="http://www.w3.org/2000/svg">
         <path d="M586.221 268.039L502.504 402.075L418.733 268.039H586.221Z" fill="#69AEE0"></path>
         <path d="M334.996 402.075L418.744 268.029L502.492 402.075H334.996Z" fill="#70B1E1"></path>
         <path d="M418.723 268.039L334.996 402.075L251.246 268.039H418.723Z" fill="#92CAEF"></path>
@@ -122,11 +126,41 @@
         <path d="M167.497 134.035L251.245 0L334.993 134.045L167.497 134.035Z" fill="#73B2E2"></path>
         <path d="M251.225 0L167.498 134.035L83.749 0H251.225Z" fill="#65A5DA"></path>
       </svg>
-      <span class="c-logo-label c-logo-label--footer u-font-logo u-flex-shrink-none">BLUE B NOSE</span>
+      <span class="c-display-m u-font-logo u-flex-shrink-none">BLUE B NOSE</span>
     </a>
-    <span class="c-suppl-l u-text-secondary">〒<span
-        class="u-font-en-con"><?php echo get_vars('company', 'zip');?></span>
-      <?php echo get_vars('company', 'address');?></span>
+    <h3 class="c-display-s u-text-weight-m u-font-en-con u-max-item u-block-center u-mt-m">Follow Us</h3>
+    <div class="o-cluster o-cluster--center">
+      <a class="c-sns-link c-display-m"
+        href="<?php echo get_vars('sns', 'fb');?>"
+        target="_blank" rel="noopener" aria-label="Goto Facebook">
+        <svg class="o-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <!--! Font Awesome Pro 6.4.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+          <path
+            d="M504 256C504 119 393 8 256 8S8 119 8 256c0 123.78 90.69 226.38 209.25 245V327.69h-63V256h63v-54.64c0-62.15 37-96.48 93.67-96.48 27.14 0 55.52 4.84 55.52 4.84v61h-31.28c-30.8 0-40.41 19.12-40.41 38.73V256h68.78l-11 71.69h-57.78V501C413.31 482.38 504 379.78 504 256z"
+            fill="currentColor"></path>
+        </svg>
+      </a>
+      <a class="c-sns-link c-display-m"
+        href="<?php echo get_vars('sns', 'tw');?>"
+        target="_blank" rel="noopener" aria-label="Goto Twitter">
+        <svg class="o-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+          <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+          <path
+            d="M389.2 48h70.6L305.6 224.2 487 464H345L233.7 318.6 106.5 464H35.8L200.7 275.5 26.8 48H172.4L272.9 180.9 389.2 48zM364.4 421.8h39.1L151.1 88h-42L364.4 421.8z"
+            fill="currentColor" />
+        </svg>
+      </a>
+      <a class="c-sns-link c-display-m"
+        href="<?php echo get_vars('sns', 'instagram');?>"
+        target="_blank" rel="noopener" aria-label="Goto Instagram">
+        <svg class="o-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512">
+          <!--! Font Awesome Pro 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. -->
+          <path
+            d="M224.1 141c-63.6 0-114.9 51.3-114.9 114.9s51.3 114.9 114.9 114.9S339 319.5 339 255.9 287.7 141 224.1 141zm0 189.6c-41.1 0-74.7-33.5-74.7-74.7s33.5-74.7 74.7-74.7 74.7 33.5 74.7 74.7-33.6 74.7-74.7 74.7zm146.4-194.3c0 14.9-12 26.8-26.8 26.8-14.9 0-26.8-12-26.8-26.8s12-26.8 26.8-26.8 26.8 12 26.8 26.8zm76.1 27.2c-1.7-35.9-9.9-67.7-36.2-93.9-26.2-26.2-58-34.4-93.9-36.2-37-2.1-147.9-2.1-184.9 0-35.8 1.7-67.6 9.9-93.9 36.1s-34.4 58-36.2 93.9c-2.1 37-2.1 147.9 0 184.9 1.7 35.9 9.9 67.7 36.2 93.9s58 34.4 93.9 36.2c37 2.1 147.9 2.1 184.9 0 35.9-1.7 67.7-9.9 93.9-36.2 26.2-26.2 34.4-58 36.2-93.9 2.1-37 2.1-147.8 0-184.8zM398.8 388c-7.8 19.6-22.9 34.7-42.6 42.6-29.5 11.7-99.5 9-132.1 9s-102.7 2.6-132.1-9c-19.6-7.8-34.7-22.9-42.6-42.6-11.7-29.5-9-99.5-9-132.1s-2.6-102.7 9-132.1c7.8-19.6 22.9-34.7 42.6-42.6 29.5-11.7 99.5-9 132.1-9s102.7-2.6 132.1 9c19.6 7.8 34.7 22.9 42.6 42.6 11.7 29.5 9 99.5 9 132.1s2.7 102.7-9 132.1z"
+            fill="currentColor"></path>
+        </svg>
+      </a>
+    </div>
   </div>
   <p class="c-suppl-m u-font-en-con u-text-center">
     <?php echo get_vars('site', 'copyright');?>

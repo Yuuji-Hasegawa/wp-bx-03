@@ -61,6 +61,46 @@ function set_bread_json()
                 )
             );
             $array = array_merge($array, $child);
+        } elseif (is_post_type_archive('product')) {
+            $child[] = array(
+              "@type" => "ListItem",
+              "position" => 2,
+              "item" => array(
+                  "@id" => esc_url(home_url('/product/')),
+                  "name" => esc_attr('商品一覧')
+              )
+        );
+            $array = array_merge($array, $child);
+        } elseif (is_post_type_archive('gallery')) {
+            $child[] = array(
+              "@type" => "ListItem",
+              "position" => 2,
+              "item" => array(
+                  "@id" => esc_url(home_url('/gallery/')),
+                  "name" => esc_attr('ギャラリー')
+              )
+        );
+            $array = array_merge($array, $child);
+        } elseif (is_post_type_archive('review')) {
+            $child[] = array(
+              "@type" => "ListItem",
+              "position" => 2,
+              "item" => array(
+                  "@id" => esc_url(home_url('/review/')),
+                  "name" => esc_attr('お客様の声')
+              )
+        );
+            $array = array_merge($array, $child);
+        } elseif (is_post_type_archive('campaign')) {
+            $child[] = array(
+              "@type" => "ListItem",
+              "position" => 2,
+              "item" => array(
+                  "@id" => esc_url(home_url('/campaign/')),
+                  "name" => esc_attr('キャンペーン')
+              )
+        );
+            $array = array_merge($array, $child);
         } elseif (is_tag()) {
             $parent[] = array(
                 "@type" => "ListItem",
@@ -152,6 +192,42 @@ function set_bread_json()
                 )
             );
             $array = array_merge($array, $parent, $child);
+        } elseif('product' == get_post_type()) {
+            $parent[] = array(
+              "@type" => "ListItem",
+              "position" => 2,
+              "item" => array(
+                  "@id" => esc_url(home_url('/product/')),
+                  "name" => esc_attr('商品一覧')
+              )
+          );
+            $child[] = array(
+                "@type" => "ListItem",
+                "position" => 3,
+                "item" => array(
+                    "@id" => esc_url(get_permalink($post->ID)),
+                    "name" => esc_html(get_the_title($post->ID))
+                )
+            );
+            $array = array_merge($array, $parent, $child);
+        } elseif('campaign' == get_post_type()) {
+            $parent[] = array(
+              "@type" => "ListItem",
+              "position" => 2,
+              "item" => array(
+                  "@id" => esc_url(home_url('/campaign/')),
+                  "name" => esc_attr('キャンペーン')
+              )
+        );
+            $child[] = array(
+                "@type" => "ListItem",
+                "position" => 3,
+                "item" => array(
+                    "@id" => esc_url(get_permalink($post->ID)),
+                    "name" => esc_html(get_the_title($post->ID))
+                )
+            );
+            $array = array_merge($array, $parent, $child);
         } elseif (is_attachment()) {
             $attachment[] = array(
                 "@type" => "ListItem",
@@ -233,6 +309,10 @@ function set_content_json()
     $cat_name = '';
     if ('news' == get_post_type()) {
         $cat_name = 'お知らせ';
+    } elseif ('product' == get_post_type()) {
+        $cat_name = '商品';
+    } elseif ('campaign' == get_post_type()) {
+        $cat_name = 'キャンペーン';
     } elseif (get_the_category($post->ID)) {
         $cat = get_the_category($post->ID);
         $cat_name = esc_attr($cat[0]->cat_name);
